@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/posebar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/cameraTextureView"
+        android:orientation="horizontal">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/pose1"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:layout_weight="1"
+                    android:src="@drawable/pose1" />
+
+                <ImageButton
+                    android:id="@+id/pose2"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:layout_weight="1"
+                    android:src="@drawable/pose2" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:src="@tools:sample/avatars[0]" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:src="@tools:sample/avatars[0]" />
+
+                <ImageButton
+                    android:id="@+id/imageButton5"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:src="@tools:sample/avatars[0]" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <TextureView
+        android:id="@+id/cameraTextureView"
+        android:layout_width="411.3dp"
+        android:layout_height="548.4dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <TextView
+        android:id="@+id/timerView"
+        android:layout_width="411.3dp"
+        android:layout_height="548.4dp"
+        android:layout_alignBottom="@+id/cameraTextureView"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="95sp" />
+
+    <ImageButton
+        android:id="@+id/timer"
+        android:layout_width="50dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+    <ImageButton
+        android:id="@+id/grid"
+        android:layout_width="50dp"
+        android:layout_height="66dp"
+        android:layout_toEndOf="@+id/timer"
+        android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/ic_dialog_dialer" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cameraTextureView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="120dp">
+
+        <ImageButton
+            android:id="@+id/galley"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/capture"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.333"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <Button
+            android:id="@+id/pose"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:text="포즈선택"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/capture"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/capture"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/cameraimg" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:text="갤러리"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/capture"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/gridView"
+        android:layout_width="411.3dp"
+        android:layout_height="548.4dp"
+        android:layout_alignBottom="@+id/cameraTextureView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        app:srcCompat="@drawable/grid" />
+
+    <ImageView
+        android:id="@+id/poseview1"
+        android:layout_width="227dp"
+        android:layout_height="445dp"
+        android:layout_above="@+id/posebar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/poseview1" />
+
+    <ImageView
+        android:id="@+id/poseview2"
+        android:layout_width="227dp"
+        android:layout_height="445dp"
+        android:layout_above="@+id/posebar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/poseview2" />
+
+</RelativeLayout>
