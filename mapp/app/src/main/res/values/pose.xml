@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sample_image">
+        <item>@drawable/pose1</item>
+        <item>@drawable/pose2</item>
+        <item>@drawable/pose3</item>
+        <item>@drawable/pose4</item>
+        <item>@drawable/pose5</item>
+    </array>
+</resources>

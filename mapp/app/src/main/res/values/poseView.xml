@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="poseview">
+        <item>@drawable/poseview1</item>
+        <item>@drawable/poseview2</item>
+        <item>@drawable/poseview3</item>
+        <item>@drawable/poseview4</item>
+        <item>@drawable/poseview5</item>
+    </array>
+</resources>

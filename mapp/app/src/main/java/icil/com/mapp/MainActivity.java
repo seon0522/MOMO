@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements CallbackInterface
     private ImageButton mCameraCountButton;
     private ImageButton mCameraPose1, mCameraPose2;
     private ImageView mCameraPoseView1, mCameraPoseView2;
+    private ImageButton mCameraPose[];
+    private ImageView mCameraPoseView[];
 
     static final int REQUEST_CAMERA = 1;
     static final int REQUEST_STORAGE = 2;
@@ -83,20 +85,37 @@ public class MainActivity extends AppCompatActivity implements CallbackInterface
         mCameraTimerView = (TextView) findViewById(R.id.timerView);
         mCameraGridView = (ImageView) findViewById(R.id.gridView);
         mCameraPoseBar = (LinearLayout) findViewById(R.id.posebar);
+
+        mCameraPose = new ImageButton[5];
+        mCameraPoseView = new ImageView[5];
+
+        int[] poseId = new int[]{R.id.pose1, R.id.pose2, R.id.pose3, R.id.pose4, R.id.pose5};
+        int[] poseviewId = new int[]{R.id.poseview1, R.id.poseview2, R.id.poseview3, R.id.poseview4, R.id.poseview5};
+
+
+        for (int i = 0; i < 5; i++){
+            mCameraPose[i] = (ImageButton) findViewById(poseId[i]);
+            mCameraPoseView[i] = (ImageView) findViewById(poseviewId[i]);
+            mCameraPoseView[i].setVisibility(View.INVISIBLE);
+        }
         mCameraPose1 = (ImageButton) findViewById(R.id.pose1);
         mCameraPoseView1 = (ImageView) findViewById(R.id.poseview1);
         mCameraPose2 = (ImageButton) findViewById(R.id.pose2);
         mCameraPoseView2 = (ImageView) findViewById(R.id.poseview2);
 
 
-        mPreview = new Preview(this, mCameraTextureView, mCameraCaptureButton, mCameraGalleyButton, mCameraCountButton, mCameraGridButton,mCameraTimerView, mCameraGridView, mCameraPoseButton, mCameraPoseBar, mCameraPose1, mCameraPoseView1,mCameraPose2, mCameraPoseView2, mRelativeLayout);
+        mPreview = new Preview(this, mCameraTextureView, mCameraCaptureButton, mCameraGalleyButton, mCameraCountButton,
+                mCameraGridButton,mCameraTimerView, mCameraGridView, mCameraPoseButton, mCameraPoseBar,
+                mCameraPose[0], mCameraPoseView[0],
+                mCameraPose[1], mCameraPoseView[1],
+                mCameraPose[2], mCameraPoseView[2],
+                mCameraPose[3], mCameraPoseView[3],
+                mCameraPose[4], mCameraPoseView[4],mRelativeLayout);
         mPreview.setOnCallbackListener(this);
 
         mCameraGridView.setVisibility(View.INVISIBLE);
         mCameraPoseBar.setVisibility(View.INVISIBLE);
 
-        mCameraPoseView1.setVisibility(View.INVISIBLE);
-        mCameraPoseView2.setVisibility(View.INVISIBLE);
 
         int permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permissionStorage == PackageManager.PERMISSION_DENIED) {

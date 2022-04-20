@@ -72,8 +72,11 @@ public class Preview extends Thread {
     private ImageButton mGridBtn;
     private RelativeLayout mRelativeLayout;
 
-    private ImageButton mPose1, mPose2;
-    private ImageView mPose1View, mPose2View;
+    private ImageButton mPose1, mPose2,mPose3, mPose4,mPose5;
+    private ImageView mPose1View, mPose2View, mPose3View, mPose4View, mPose5View;
+
+    private ImageButton mPose[];
+    private ImageView mPoseView[];
 
     private ImageView mGridView;
     private LinearLayout mPoseBar;
@@ -95,14 +98,24 @@ public class Preview extends Thread {
     }
 
     //Preview = 카메라 기능 / TextureView 카메라의 화면을 보여준다
-    public Preview(Context context, TextureView textureView, ImageButton captureBtn, ImageButton galleyBtn, ImageButton timerBtn, ImageButton gridBtn, TextView timerView, ImageView gridView, Button poseBtn, LinearLayout poseBar, final ImageButton pose1, final ImageView pose1View,final ImageButton pose2, final ImageView pose2View, RelativeLayout reLayout) {
+    public Preview(Context context, TextureView textureView, ImageButton captureBtn, ImageButton galleyBtn, ImageButton timerBtn, ImageButton gridBtn,
+                   TextView timerView, ImageView gridView, Button poseBtn, LinearLayout poseBar,
+                   ImageButton pose1, ImageView poseView1,
+                   ImageButton pose2, ImageView poseView2,
+                   ImageButton pose3, ImageView poseView3,
+                   ImageButton pose4, ImageView poseView4,
+                   ImageButton pose5, ImageView poseView5,RelativeLayout reLayout) {
             Log.d("태그", "Preview-> Preview() start");
             mContext     = context;
         mTextureView = textureView;
         mTimerView = timerView;
         mGridView = gridView;
-        mPose1View = pose1View;
-        mPose2View = pose2View;
+        mPose1View = poseView1;
+        mPose2View = poseView2;
+        mPose3View = poseView3;
+        mPose4View = poseView4;
+        mPose5View = poseView5;
+
         mRelativeLayout = reLayout;
         mCaptureBtn = captureBtn;
         mGalleyBtn = galleyBtn;
@@ -112,12 +125,16 @@ public class Preview extends Thread {
         mPoseBar = poseBar;
         mPose1 = pose1;
         mPose2 = pose2;
+        mPose3 = pose3;
+        mPose4 = pose4;
+        mPose5 = pose5;
 
         //pose1눌렀을 때
         mPose1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(pose1On_Off == 0) {
+//                    클릭
                     pose1On_Off = 1;
                     mPose1View.setVisibility(View.VISIBLE);
                     mRelativeLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -139,7 +156,7 @@ public class Preview extends Thread {
                 }
             }
         });
-
+        //pose2눌렀을 때
         mPose2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,6 +182,114 @@ public class Preview extends Thread {
                 }
             }
         });
+
+        //pose3눌렀을 때
+        mPose3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(pose1On_Off == 0) {
+                    pose1On_Off = 1;
+                    mPose3View.setVisibility(View.VISIBLE);
+                    mRelativeLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            switch (event.getAction()){
+                                case  MotionEvent.ACTION_DOWN :
+                                case  MotionEvent.ACTION_MOVE :
+                                case  MotionEvent.ACTION_UP :
+                                    mPose3View.setX(event.getX());
+                                    mPose3View.setY(event.getY());
+                            }
+                            return true;
+                        }
+                    });
+                } else {
+                    pose1On_Off = 0;
+                    mPose3View.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        //pose1눌렀을 때
+        mPose4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(pose1On_Off == 0) {
+                    pose1On_Off = 1;
+                    mPose4View.setVisibility(View.VISIBLE);
+                    mRelativeLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            switch (event.getAction()){
+                                case  MotionEvent.ACTION_DOWN :
+                                case  MotionEvent.ACTION_MOVE :
+                                case  MotionEvent.ACTION_UP :
+                                    mPose4View.setX(event.getX());
+                                    mPose4View.setY(event.getY());
+                            }
+                            return true;
+                        }
+                    });
+                } else {
+                    pose1On_Off = 0;
+                    mPose4View.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+
+        //pose5눌렀을 때
+        mPose5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(pose1On_Off == 0) {
+                    pose1On_Off = 1;
+                    mPose5View.setVisibility(View.VISIBLE);
+                    mRelativeLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            switch (event.getAction()){
+                                case  MotionEvent.ACTION_DOWN :
+                                case  MotionEvent.ACTION_MOVE :
+                                case  MotionEvent.ACTION_UP :
+                                    mPose5View.setX(event.getX());
+                                    mPose5View.setY(event.getY());
+                            }
+                            return true;
+                        }
+                    });
+                } else {
+                    pose1On_Off = 0;
+                    mPose5View.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+//        mPose2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(pose1On_Off == 0) {
+//                    pose1On_Off = 1;
+//                    mPose2View.setVisibility(View.VISIBLE);
+//                    mRelativeLayout.setOnTouchListener(new View.OnTouchListener() {
+//                        @Override
+//                        public boolean onTouch(View v, MotionEvent event) {
+//                            switch (event.getAction()){
+//                                case  MotionEvent.ACTION_DOWN :
+//                                case  MotionEvent.ACTION_MOVE :
+//                                case  MotionEvent.ACTION_UP :
+//                                    mPose2View.setX(event.getX());
+//                                    mPose2View.setY(event.getY());
+//                            }
+//                            return true;
+//                        }
+//                    });
+//                } else {
+//                    pose1On_Off = 0;
+//                    mPose2View.setVisibility(View.INVISIBLE);
+//                }
+//            }
+//        });
 
 
         //타이머 모드 on_off
